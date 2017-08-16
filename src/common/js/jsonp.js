@@ -20,10 +20,12 @@ export  default  function (url, data, option) {
 function param(data){
   let url = '';
   for(var k in data){
-    let value = data[k] !== 'undefined'? data[k]:'';
-    //es6语法
-    url += '&${k}=${encodeURLComponent(value)}';
+    let value = data[k] !== undefined ? data[k]:'';
+    //es6语法 encodeURIComponent
+    url += `&${k}=${encodeURIComponent(value)}`;
+    //url += '&' + k + '=' + encodeURIComponent(value)
   }
   //判断返回的url是否为空，如果不为空，则去掉第一个&符号
   return url? url.substring(1):'';
 }
+
